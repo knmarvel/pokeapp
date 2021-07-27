@@ -35,4 +35,13 @@ fetchPokemon("ditto")
 fetchPokemon("pikachu")
 
 // get 100 pokemon and display them
+const fetch100Pokemon = function(){
+    let pokemonURL = POKE_URL + "?limit=100"
+    fetch(pokemonURL)
+    .then(response => response.json())
+    .then(data => {
+        data.results.forEach(pokemon => fetchPokemon(pokemon.name))
+    })
+}
 
+fetch100Pokemon()
